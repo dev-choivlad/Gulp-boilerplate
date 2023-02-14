@@ -5,8 +5,23 @@ const buildFolder = `./dist`;
 const srcFolder = `./src`;
 
 const paths = {
-	build: {},
-	src: {},
+	build: {
+		html: `${buildFolder}/`,
+		css: `${buildFolder}/css/`,
+		js: `${buildFolder}/js/`,
+		img: `${buildFolder}/img/`,
+		fonts: `${buildFolder}/fonts/`,
+		files: `${buildFolder}/static/`,
+	},
+	src: {
+		html: `${srcFolder}/*.html`,
+		scss: `${srcFolder}/scss/style.scss`,
+		js: `${srcFolder}/js/app.js`,
+		img: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,ico,webp}`,
+		svg: `${srcFolder}/img/**/*.svg`,
+		svgicons: `${srcFolder}/svgicons/*.svg`,
+		files: `${srcFolder}/static/**/*.*`,
+	},
 	watch: {},
 	clean: buildFolder,
 	buildFolder: buildFolder,
