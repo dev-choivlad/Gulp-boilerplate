@@ -4,7 +4,7 @@ const rootFolder = nodePath.basename(nodePath.resolve())
 const buildFolder = `./dist`;
 const srcFolder = `./src`;
 
-const paths = {
+export const paths = {
 	build: {
 		html: `${buildFolder}/`,
 		css: `${buildFolder}/css/`,
@@ -22,7 +22,10 @@ const paths = {
 		svgicons: `${srcFolder}/svgicons/*.svg`,
 		files: `${srcFolder}/static/**/*.*`,
 	},
-	watch: {},
+	watch: {
+		html: `${srcFolder}/**/*.html`,
+		files: `${srcFolder}/static/**/*.*`,
+	},
 	clean: buildFolder,
 	buildFolder: buildFolder,
 	srcFolder: srcFolder,
