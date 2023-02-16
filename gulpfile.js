@@ -16,16 +16,18 @@ import { clean } from "./gulp/tasks/clean.js";
 import { html } from "./gulp/tasks/html.js";
 import { bsync } from "./gulp/tasks/bsync.js";
 import { scss } from "./gulp/tasks/scss.js";
+import { script } from "./gulp/tasks/script.js";
 
 // Watchers
 function watcher() {
 	gulp.watch(paths.watch.files, copy);
 	gulp.watch(paths.watch.html, html);
 	gulp.watch(paths.watch.scss, scss);
+	gulp.watch(paths.watch.js, script);
 }
 
 // Main tasks
-const mainTasks = gulp.parallel(copy, html, scss)
+const mainTasks = gulp.parallel(copy, html, scss, script)
 
 // Tasks running flow
 const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync))

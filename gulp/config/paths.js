@@ -25,6 +25,7 @@ export const paths = {
 	watch: {
 		html: `${srcFolder}/**/*.html`,
 		scss: `${srcFolder}/scss/**/*.scss`,
+		js: `${srcFolder}/js/**/*.js`,
 		files: `${srcFolder}/static/**/*.*`,
 	},
 	clean: buildFolder,
