@@ -28,6 +28,10 @@
   },
   "homepage": "https://github.com/dev-choivlad/Gulp-boilerplate#readme",
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
     "browser-sync": "^2.27.11",
     "del": "^7.0.0",
     "gulp": "^4.0.2",
