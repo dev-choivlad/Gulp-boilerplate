@@ -5,6 +5,8 @@ import { paths } from "./gulp/config/paths.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
+	isBuild: process.argv.includes("--build"),
+	isDev: !process.argv.includes("--build"),
 	gulp,
 	paths,
 	plugins,
@@ -30,7 +32,7 @@ function watcher() {
 	gulp.watch(paths.watch.html, html);
 	gulp.watch(paths.watch.scss, scss);
 	gulp.watch(paths.watch.js, script);
-	//gulp.watch(paths.watch.img, images);
+	gulp.watch(paths.watch.img, images);
 }
 
 // Main tasks
@@ -38,7 +40,8 @@ const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, script, ima
 
 // Tasks running flow
 const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync));
+const build = gulp.series(clean, mainTasks)
 
 gulp.task("default", dev)
 
-export {svgsprite, }
+export { dev, build, svgsprite }
