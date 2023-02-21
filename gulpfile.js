@@ -17,6 +17,7 @@ import { html } from "./gulp/tasks/html.js";
 import { bsync } from "./gulp/tasks/bsync.js";
 import { scss } from "./gulp/tasks/scss.js";
 import { script } from "./gulp/tasks/script.js";
+import { images } from "./gulp/tasks/images.js";
 
 // Watchers
 function watcher() {
@@ -24,10 +25,11 @@ function watcher() {
 	gulp.watch(paths.watch.html, html);
 	gulp.watch(paths.watch.scss, scss);
 	gulp.watch(paths.watch.js, script);
+	gulp.watch(paths.watch.img, images);
 }
 
 // Main tasks
-const mainTasks = gulp.parallel(copy, html, scss, script)
+const mainTasks = gulp.parallel(copy, html, scss, script, images)
 
 // Tasks running flow
 const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync))
