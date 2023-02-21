@@ -22,6 +22,7 @@ import { script } from "./gulp/tasks/script.js";
 import { images } from "./gulp/tasks/images.js";
 import { otfToTtf, ttfToWoff, fontStyle } from "./gulp/tasks/fonts.js";
 import { svgsprite } from "./gulp/tasks/svgsprite.js";
+import { zip } from "./gulp/tasks/zip.js";
 
 // Fonts processing
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
@@ -40,8 +41,11 @@ const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, script, ima
 
 // Tasks running flow
 const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync));
+
 const build = gulp.series(clean, mainTasks)
+
+const deployZip = gulp.series(clean, mainTasks, zip);
 
 gulp.task("default", dev)
 
-export { dev, build, svgsprite }
+export { dev, build, deployZip, svgsprite }
