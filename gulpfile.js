@@ -18,6 +18,11 @@ import { bsync } from "./gulp/tasks/bsync.js";
 import { scss } from "./gulp/tasks/scss.js";
 import { script } from "./gulp/tasks/script.js";
 import { images } from "./gulp/tasks/images.js";
+import { otfToTtf, ttfToWoff, fontStyle } from "./gulp/tasks/fonts.js";
+import { svgsprite } from "./gulp/tasks/svgsprite.js";
+
+// Fonts processing
+const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
 
 // Watchers
 function watcher() {
@@ -25,13 +30,15 @@ function watcher() {
 	gulp.watch(paths.watch.html, html);
 	gulp.watch(paths.watch.scss, scss);
 	gulp.watch(paths.watch.js, script);
-	gulp.watch(paths.watch.img, images);
+	//gulp.watch(paths.watch.img, images);
 }
 
 // Main tasks
-const mainTasks = gulp.parallel(copy, html, scss, script, images)
+const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, script, images));
 
 // Tasks running flow
-const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync))
+const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync));
 
 gulp.task("default", dev)
+
+export {svgsprite, }
