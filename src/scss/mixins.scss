@@ -1,0 +1,23 @@
+$maxWidth: 1440;
+
+@mixin adaptive-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$maxWidth: $maxWidth - 320;
+	font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin centering-x() {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+@mixin centering-y() {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin centering-xy() {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
