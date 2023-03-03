@@ -13,6 +13,8 @@ button {
 	display: block;
 	cursor: pointer;
 	outline: none;
+	overflow: hidden;
+	border-style: none;
 }
 
 a,
@@ -45,9 +47,9 @@ p {
 
 ul {
 	padding: 0;
+	margin: 0;
 }
 
 ul li {
 	list-style: none;
 }
-

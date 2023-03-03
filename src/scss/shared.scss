@@ -16,3 +16,9 @@ section {
 .green {
 	background-color: green;
 }
+
+@media screen and (max-width: 768px) {
+	body.lock {
+		overflow: hidden;
+	}
+}
