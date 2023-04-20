@@ -1,3 +1,9 @@
+const html = document.documentElement
+
+function FLS(message) {
+	setTimeout(() => (window.FLS ? console.log(message) : null), 0)
+}
+
 export function isWebp() {
 	// Webp support check
 	const testWebp = (callback) => {

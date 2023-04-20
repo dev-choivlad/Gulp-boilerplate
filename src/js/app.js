@@ -1,6 +1,11 @@
 import * as flsFunctions from "./modules/check-webp.js";
-import { burgerButtonHandler } from "./modules/helpers.js";
+import {
+	isWebp,
+	toggleMenu,
+	highlightMenuItem,
+} from "./modules/helpers.js";
 
 
-flsFunctions.isWebp();
-burgerButtonHandler();
+isWebp();
+toggleMenu();
+highlightMenuItem();

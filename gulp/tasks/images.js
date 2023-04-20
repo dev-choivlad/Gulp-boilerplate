@@ -1,6 +1,6 @@
 import webp from "gulp-webp";
 // TODO uncomment the code below when imagemin is fixed
-//import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
+import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 
 export const images = () => {
 	return app.gulp.src(app.paths.src.img)

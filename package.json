@@ -1,7 +1,7 @@
 {
-  "name": "gulp-boilerplate",
+  "name": "My Dashboard",
   "version": "1.0.0",
-  "description": "Gulp + webpack + Babel",
+  "description": "My Dashboard",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
@@ -13,24 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-choivlad/Gulp-boilerplate.git"
+    "url": ""
   },
-  "keywords": [
-    "gulp",
-    "webpack",
-    "babel",
-    "web",
-    "development",
-    "js",
-    "css",
-    "html"
-  ],
   "author": "Vlad Choi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-choivlad/Gulp-boilerplate/issues"
-  },
-  "homepage": "https://github.com/dev-choivlad/Gulp-boilerplate#readme",
+  "homepage": "https://dev-choivlad.github.io/Dashboard",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/polyfill": "^7.12.1",
