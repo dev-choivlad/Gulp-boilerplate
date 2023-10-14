@@ -1,10 +1,10 @@
-import * as nodePath from "path";
-const rootFolder = nodePath.basename(nodePath.resolve())
-
+import path from "path";
+const projectDirName = path.basename(path.resolve());
 const buildFolder = `./dist`;
 const srcFolder = `./src`;
 
-export const paths = {
+
+const filePaths = {
 	build: {
 		html: `${buildFolder}/`,
 		css: `${buildFolder}/css/`,
@@ -32,5 +32,7 @@ export const paths = {
 	clean: buildFolder,
 	buildFolder: buildFolder,
 	srcFolder: srcFolder,
-	rootFolder: rootFolder,
+	projectDirName: projectDirName
 }
+
+export { filePaths };
