@@ -1,7 +1,11 @@
-@import "normalize";
-@import "fonts";
-@import "basics";
-@import "vars";
-@import "mixins";
-@import "shared";
-@import "header";
+@import "fonts/fonts";
+@import "fonts/typography";
+
+@import "config/normalize";
+@import "config/basics";
+@import "config/shared";
+
+@import "tools/vars";
+@import "tools/mixins";
+
+@import "components/header";
