@@ -1,23 +1,36 @@
 {
-  "name": "My Dashboard",
-  "version": "1.0.0",
-  "description": "My Dashboard",
+  "name": "Gulp Boilerplate + Webpack & Babel",
+  "version": "1.0.1",
+  "description": "Gulp + Webpack & Babel",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
     "dev": "gulp",
     "build": "gulp build --build",
-    "svg": "gulp svgsprite",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "zip": "gulp deployZip --build"
+    "svg": "gulp svgsprite",
+    "zip": "gulp deployZip --build",
+    "deployFTP": "gulp deployFTP --build",
+    "prettier": "prettier --write \"**/*.{js, jsx, ts, tsx, json, html, css, md, yaml, yml}\"",
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/dev-choivlad/Gulp-boilerplate.git"
   },
+  "keywords": [
+    "gulp",
+    "webpack",
+    "babel",
+    "css",
+    "scss",
+    "html",
+    "postcss",
+    "boilerplate"
+  ],
   "author": "Vlad Choi",
   "license": "ISC",
-  "homepage": "https://dev-choivlad.github.io/Dashboard",
+  "homepage": "https://github.com/dev-choivlad/Gulp-boilerplate#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/polyfill": "^7.12.1",
