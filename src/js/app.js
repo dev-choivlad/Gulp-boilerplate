@@ -1,3 +1,4 @@
+/*
 import * as flsFunctions from "./modules/check-webp.js";
 import {
 	isWebp,
@@ -8,4 +9,6 @@ import {
 
 isWebp();
 toggleMenu();
-highlightMenuItem();
+highlightMenuItem();*/
+
+console.log("this is js")

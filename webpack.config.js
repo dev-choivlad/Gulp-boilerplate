@@ -1,4 +1,4 @@
-import * as path from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -11,7 +11,7 @@ const paths = {
 
 export const webpackConfig = (isMode) => {
 	return {
-		entry: ["@babel/polyfill", path.join(path.src, "js/app.js")],
+		entry: ["@babel/polyfill", path.join(paths.src, "js/app.js")],
 		mode: isMode ? "development" : "production",
 		output: {
 			path: path.join(paths.build, "js"),

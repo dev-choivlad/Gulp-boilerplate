@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import { plugins } from "../config/plugins.js";
 import { filePaths } from "../config/paths.js";
-import { isBuild } from "../../gulpfile";
+import { isBuild } from "../../gulpfile.js";
 
 import webp from "gulp-webp"
 import imagemin from "gulp-imagemin"

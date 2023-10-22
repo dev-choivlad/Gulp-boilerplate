@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import { plugins } from "../config/plugins.js";
 import { filePaths } from "../config/paths.js";
-import { isBuild, isDev } from "../../gulpfile";
+import { isBuild, isDev } from "../../gulpfile.js";
 
 import dartSass from "sass";
 import gulpSass from "gulp-sass";

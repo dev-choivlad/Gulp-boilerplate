@@ -1,11 +1,11 @@
 @import "fonts/fonts";
 @import "fonts/typography";
 
-@import "config/normalize";
-@import "config/basics";
-@import "config/shared";
-
 @import "tools/vars";
 @import "tools/mixins";
+
+@import "config/normalize";
+@import "config/basics";
+//@import "config/shared";
 
 @import "components/header";

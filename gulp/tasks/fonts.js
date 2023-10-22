@@ -1,6 +1,7 @@
 import gulp from "gulp";
 import { filePaths } from "../config/paths.js";
 import { plugins } from "../config/plugins.js";
+
 import fs from "fs";
 import chalk from "chalk";
 import fonter from "gulp-fonter-fix"; // Converts otf --> ttf & woff
@@ -70,7 +71,7 @@ export const fontStyle = () => {
 						const fontWeightValue = fontWeights[fontWeight.toLowerCase()];
 
 						fs.appendFile(
-							fontsFile,
+							fontStyleFile,
 							`@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fileName}.woff2") format("woff2"), url("../fonts/${fileName}.woff") format("woff");\n\tfont-weight: ${fontWeightValue};\n\tfont-style: normal;\n}\r\n`,
 							cb
 						)
@@ -80,7 +81,7 @@ export const fontStyle = () => {
 			} else {
 				// If there is a file, delete
 				console.log(
-					chalk.bold.white.bgGreenBright(
+					chalk.bold.white.bgYellowBright(
 						// "The file scss/fonts.scss already exists. \nTo update the file, you need to delete it"
 						"Файл scss/fonts.scss уже существует. \nДля обновления файла его нужно удалить"
 					)
