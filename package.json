@@ -12,7 +12,7 @@
     "svg": "gulp svgsprite",
     "zip": "gulp deployZip --build",
     "deployFTP": "gulp deployFTP --build",
-    "prettier": "prettier --write \"**/*.{js, jsx, ts, tsx, json, html, css, md, yaml, yml}\"",
+    "prettier": "prettier --write \"**/*.{js, jsx, ts, tsx, json, html, css, md, yaml, yml}\""
   },
   "repository": {
     "type": "git",
