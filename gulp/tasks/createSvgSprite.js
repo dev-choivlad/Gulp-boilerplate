@@ -1,6 +1,7 @@
 import gulp from "gulp";
 import { filePaths } from "../config/paths.js";
 import { plugins} from "../config/plugins.js";
+
 import svgSprite from "gulp-svg-sprite";
 
 export const createSvgSprite = () => {

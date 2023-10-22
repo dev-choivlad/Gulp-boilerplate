@@ -1,41 +1,32 @@
-import webp from "gulp-webp";
-// TODO uncomment the code below when imagemin is fixed
-import imagemin, { gifsicle, mozjpeg, optipng } from "gulp-imagemin";
+import gulp from "gulp";
+import { plugins } from "../config/plugins.js";
+import { filePaths } from "../config/paths.js";
+import { isBuild } from "../../gulpfile";
+
+import webp from "gulp-webp"
+import imagemin from "gulp-imagemin"
 
 export const images = () => {
-	return app.gulp.src(app.paths.src.img)
-		.pipe(app.plugins.plumber(
-			app.plugins.notify.onError({
-				title: "IMAGES",
-				message: "Error: <%= error.message %>"
-			})
-		))
-		.pipe(app.plugins.newer(app.paths.build.img))
-		.pipe(app.plugins.if(
-			app.isBuild,
-			webp()
-		))
-		.pipe(app.plugins.if(
-			app.isBuild,
-			app.gulp.dest(app.paths.build.img)
-		))
-		.pipe(app.plugins.if(
-			app.isBuild,
-			app.gulp.src(app.paths.src.img)
-		))
-		.pipe(app.plugins.if(
-			app.isBuild,
-			app.plugins.newer(app.paths.build.img)
-		))
-			// TODO remove images copy and comment below code when fix imagemin
-		//.pipe(app.gulp.dest(app.paths.build.img))
-		.pipe(imagemin([
-		 gifsicle({ interlaced: true }),
-		 mozjpeg({ quality: 75, progressive: true }),
-		 optipng({ optimizationLevel: 5 }),
-		 ]))
-		.pipe(app.gulp.dest(app.paths.build.img))
-		.pipe(app.gulp.src(app.paths.src.svg))
-		.pipe(app.gulp.dest(app.paths.build.img))
-		.pipe(app.plugins.browserSync.stream())
+	return gulp.src(filePaths.src.img)
+		.pipe(plugins.handleError("IMAGES"))
+		.pipe(plugins.newer(filePaths.build.img))
+		.pipe(plugins.if(isBuild, webp()))
+		.pipe(plugins.if(isBuild, gulp.dest(filePaths.build.img)))
+		.pipe(plugins.if(isBuild, gulp.src(filePaths.src.img)))
+		.pipe(plugins.if(isBuild, plugins.newer(filePaths.build.img)))
+		.pipe(
+			plugins.if(
+				isBuild,
+				imagemin({
+					progressive: true,
+					svgoPlugins: [{ removeViewBox: false}],
+					interlaced: true,
+					optimizationLevel: 3, // from 0 to 7
+				})
+			)
+		)
+		.pipe(gulp.dest(filePaths.build.img))
+		.pipe(gulp.src(filePaths.src.svg))
+		.pipe(gulp.dest(filePaths.build.img))
+		.pipe(plugins.browserSync.stream());
 }

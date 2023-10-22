@@ -1,35 +1,39 @@
+import gulp from "gulp";
+import { plugins } from "../config/plugins.js";
+import { filePaths } from "../config/paths.js";
+import { isBuild } from "../../gulpfile";
+
 import fileInclude from "gulp-file-include";
-import webpHtmlNosvg from "gulp-webp-html-nosvg";
+import webpHtml from "gulp-webp-html-nosvg";
 import versionNumber from "gulp-version-number";
+import htmlmin from "gulp-htmlmin";
 
 export const html = () => {
-	return app.gulp.src(app.paths.src.html)
-		.pipe(app.plugins.plumber(
-			app.plugins.notify.onError({
-				title: "HTML",
-				message: "Error: <%= error.message %>"
-			})
-		))
+	return gulp.src(filePaths.src.html)
+		.pipe(plugins.handleError("HTML"))
 		.pipe(fileInclude())
-		.pipe(app.plugins.replace(/\.\.\/img/g, "img"))
-		.pipe(app.plugins.if(
-			app.isBuild,
-			webpHtmlNosvg()
-		))
-		.pipe(app.plugins.if(
-			app.isBuild,
+		.pipe(plugins.replace(/@img\//g, "img/"))
+		.pipe(plugins.if(isBuild, webpHtml()))
+		.pipe(htmlmin({
+			useShortDoctype: true,
+			sortClassName: true,
+			removeComments: isBuild,
+			// collapseWhitespace: isBuild  // Uncomment if HTML minification is required
+		}))
+		.pipe(plugins.if(
+			isBuild,
 			versionNumber({
-				"value": "%DT%",
-				"append": {
-					"key": "_v",
-					"cover": 0,
-					"to": ["css", "js"],
+				value: "%DT%",
+				append: {
+					key: "_v",
+					cover: 0,
+					to: ["css", "js"]
 				},
-				"output": {
-					"file": "gulp/version.json"
-				}
+				output: {
+					file: "gulp/version.json"
+				},
 			})
 		))
-		.pipe(app.gulp.dest(app.paths.build.html))
-		.pipe(app.plugins.browserSync.stream())
+		.pipe(gulp.dest(filePaths.build.html))
+		.pipe(plugins.browserSync.stream())
 }
