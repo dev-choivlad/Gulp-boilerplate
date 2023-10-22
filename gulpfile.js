@@ -1,51 +1,75 @@
 import gulp from "gulp";
-import { paths } from "./gulp/config/paths.js";
-
-// Shared plugins import
 import { plugins } from "./gulp/config/plugins.js";
-
-global.app = {
-	isBuild: process.argv.includes("--build"),
-	isDev: !process.argv.includes("--build"),
-	gulp,
-	paths,
-	plugins,
-}
+import { filePaths } from "./gulp/config/paths.js";
 
 // Tasks import
 import { copy } from "./gulp/tasks/copy.js";
+import { copyRootFiles } from "./gulp/tasks/copyRootFiles.js";
 import { clean } from "./gulp/tasks/clean.js";
 import { html } from "./gulp/tasks/html.js";
 import { bsync } from "./gulp/tasks/bsync.js";
 import { scss } from "./gulp/tasks/scss.js";
-import { script } from "./gulp/tasks/script.js";
+import { javaScript } from "./gulp/tasks/script.js";
 import { images } from "./gulp/tasks/images.js";
 import { otfToTtf, ttfToWoff, fontStyle } from "./gulp/tasks/fonts.js";
 import { svgsprite } from "./gulp/tasks/svgsprite.js";
 import { zip } from "./gulp/tasks/zip.js";
+import { ftp } from "./gulp/tasks/ftp.js";
 
-// Fonts processing
-const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
+const isBuild = process.argv.includes("--build");
+const isDev = !process.argv.includes("--build");
 
 // Watchers
 function watcher() {
-	gulp.watch(paths.watch.files, copy);
-	gulp.watch(paths.watch.html, html);
-	gulp.watch(paths.watch.scss, scss);
-	gulp.watch(paths.watch.js, script);
-	gulp.watch(paths.watch.img, images);
+	gulp.watch(filePaths.watch.files, copy);
+	gulp.watch(filePaths.watch.html, html);
+	gulp.watch(filePaths.watch.scss, scss);
+	gulp.watch(filePaths.watch.js, javaScript);
+	gulp.watch(filePaths.watch.img, images);
 }
 
+// Sequential fonts processing
+const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
+
+// Parallel tasks in development mode
+const devTasks = gulp.parallel(
+	copy,
+	copyRootFiles,
+	html,
+	scss,
+	javaScript,
+	images
+)
+
 // Main tasks
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, script, images));
+const mainTasks = gulp.series(
+	fonts,
+	devTasks
+);
 
 // Tasks running flow
-const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, bsync));
+const dev = gulp.series(
+	clean,
+	mainTasks,
+	gulp.parallel(watcher, bsync)
+);
 
-const build = gulp.series(clean, mainTasks)
+const build = gulp.series(
+	clean, mainTasks
+)
 
-const deployZip = gulp.series(clean, mainTasks, zip);
+const deployZIP = gulp.series(
+	clean,
+	mainTasks,
+	zip
+);
+
+const deployFTP = gulp.series(
+	clean,
+	mainTasks,
+	ftp
+)
 
 gulp.task("default", dev)
 
-export { dev, build, deployZip, svgsprite }
+export { dev, build, deployZIP, deployFTP, svgsprite, isBuild, isDev }

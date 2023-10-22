@@ -32,7 +32,8 @@ const filePaths = {
 	clean: buildFolder,
 	buildFolder: buildFolder,
 	srcFolder: srcFolder,
-	projectDirName: projectDirName
+	projectDirName: projectDirName,
+	ftp: `` // path to the required folder on server, gulp will add folder name automatically
 }
 
 export { filePaths };
