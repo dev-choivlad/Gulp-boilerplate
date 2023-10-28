@@ -19,7 +19,7 @@ export const images = () => {
 				isBuild,
 				imagemin({
 					progressive: true,
-					svgoPlugins: [{ removeViewBox: false}],
+					svgoPlugins: [{ removeViewBox: false }],
 					interlaced: true,
 					optimizationLevel: 3, // from 0 to 7
 				})

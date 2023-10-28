@@ -1,0 +1,51 @@
+// Centering
+@mixin centering-xy() {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+@mixin centering-x() {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin centering-y() {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// Pseudo element
+@mixin pseudo-elem($position: absolute, $display: block, $content: "") {
+	position: $position;
+	display: $display;
+	content: $content;
+}
+
+// Triangle aka icon
+@mixin triangle($width, $direction, $color) {
+	width: 0;
+	height: 0;
+
+	@if $direction == up {
+		border-left: $width solid transparent;
+		border-right: $width solid transparent;
+		border-bottom: $width solid $color;
+	}
+	@if $direction == down {
+		border-left: $width solid transparent;
+		border-right: $width solid transparent;
+		border-top: $width solid $color;
+	}
+	@if $direction == left {
+		border-top: $width solid transparent;
+		border-bottom: $width solid transparent;
+		border-right: $width solid $color;
+	}
+	@if $direction == right {
+		border-top: $width solid transparent;
+		border-bottom: $width solid transparent;
+		border-left: $width solid $color;
+	}
+}

@@ -1,4 +1,3 @@
-/*
 .main-header {
 	position: fixed;
 	top: 0;
@@ -28,6 +27,7 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+	height: $headerHeightDesktop;
 	padding: .938rem 2rem;
 }
 
@@ -69,8 +69,8 @@
 	display: none;
 	position: absolute;
 	right: .938rem;
-	//@include centering-y;
-	width: 3.125rem;
+	@include centering-y;
+	width: 2.525rem;
 	height: 1.875rem;
 	background-color: transparent;
 	box-shadow: inset 0 -2px 0 0 #000;
@@ -93,7 +93,7 @@
 	}
 
 	&::after {
-		//@include centering-y;
+		@include centering-y;
 		right: 0;
 		width: 50%;
 	}
@@ -231,6 +231,7 @@
 
 @media screen and (max-width: 768px) {
 	.main-content--header {
+		height: $headerHeightMob;
 		padding: $padding-header-mob;
 	}
 
@@ -277,4 +278,3 @@
 		}
 	}
 }
-*/

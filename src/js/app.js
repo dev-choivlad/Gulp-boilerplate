@@ -8,7 +8,8 @@ import {
 
 
 isWebp();
-toggleMenu();
-highlightMenuItem();*/
+*/
 
-console.log("this is js")
+import { toggleMenu, highlightMenuItem } from "./modules/helpers.js";
+toggleMenu();
+highlightMenuItem()
