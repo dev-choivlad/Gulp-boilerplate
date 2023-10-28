@@ -4,6 +4,7 @@
 	right: 0;
 	left: 0;
 	width: 100%;
+	font-family: $font-main;
 
 	transition: all .3s ease-in-out;
 	z-index: 5;
@@ -15,7 +16,7 @@
 		content: "";
 		width: 100%;
 		height: 100%;
-		background-color: gray;
+		background-color: $colorBgBlue;
 
 		transition: all .3s ease-in-out;
 		z-index: 9;
@@ -42,13 +43,13 @@
 
 .nav-menu__list {
 	display: flex;
-
 }
 
 .nav-menu__item {
 	overflow: hidden;
+	margin-right: 2.5rem;
 
-	&:not(&:last-child) {
+/*	&:not(&:last-child) {
 		margin-right: 2.5rem;
 	}
 
@@ -56,13 +57,53 @@
 		a {
 			padding: .5rem 0 .5rem .5rem;
 		}
-	}
+	}*/
 }
 
 .nav-menu__link {
 	position: relative;
+	display: block;
 	padding: .5rem;
 	letter-spacing: .5px;
+	color: $colorBlueLight;
+	width: 100%;
+	@include transition(.18s);
+
+	&::before,
+	&::after {
+		@include pseudo-elem(absolute, block, "");
+		width: 100%;
+	}
+	&::before {
+		left: 0;
+		bottom: 60px;
+		height: 100%;
+		visibility: hidden;
+		background: transparent;
+		border: 3px solid $colorWhiteSoft;
+		border-bottom: 0;
+		opacity: 0;
+		@include transition(.1s);
+	}
+	&::after {
+		left: 0;
+		bottom: 0;
+		height: 3px;
+		background: $colorWhiteSoft;
+		-webkit-transform: scaleX(0);
+		transform: scaleX(0);
+	}
+	&:hover {
+		color: $colorWhiteSoft;
+
+		&::after {
+			-webkit-animation: underline .4s;
+			-webkit-animation-iteration-count: 1;
+			animation: underline .4s;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+		}
+	}
 }
 
 .burger-button {
@@ -226,6 +267,26 @@
 	100% {
 		width: 100%;
 		transform: translate(0, -50%) rotate(45deg) scaleX(0.6);
+	}
+}
+
+// Menu Item hover animation
+@keyframes underline {
+	20% {
+		-webkit-transform: scaleX(.8);
+		transform: scaleX(.8);
+	}
+	65% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+	}
+/*	90% {
+		-webkit-transform: scaleX(.9);
+		transform: scaleX(.9);
+	}*/
+	100% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
 	}
 }
 
