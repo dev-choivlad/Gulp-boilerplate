@@ -23,7 +23,7 @@ class MobileChecker {
     return Boolean(this.userAgent.match(/IEMobile/i));
   }
 
-  static get Any() {
+  static get isAny() {
     return(
       this.isAndroid ||
       this.isAppleOS ||
