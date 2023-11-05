@@ -83,7 +83,7 @@
 		border: 3px solid $colorWhiteSoft;
 		border-bottom: 0;
 		opacity: 0;
-		@include transition(.1s);
+		@include transition(.2s);
 	}
 	&::after {
 		left: 0;
@@ -104,6 +104,21 @@
 			animation-fill-mode: forwards;
 		}
 	}
+	&.nav-menu__link--active {
+		color: $colorWhiteSoft;
+
+		&::before {
+			visibility: visible;
+			opacity: 1;
+			bottom: 0;
+		}
+		&::after {
+			bottom: 0;
+			left: 0;
+			background: $colorWhiteSoft;
+			transform: none;
+		}
+	}
 }
 
 .burger-button {
@@ -114,7 +129,7 @@
 	width: 2.525rem;
 	height: 1.875rem;
 	background-color: transparent;
-	box-shadow: inset 0 -2px 0 0 #000;
+	box-shadow: inset 0 -2px 0 0 $colorWhiteSoft;
 
 	z-index: 10;
 
@@ -124,7 +139,7 @@
 		position: absolute;
 		content: "";
 		height: 2px;
-		background-color: #000;
+		background-color: $colorWhiteSoft;
 	}
 
 	&::before {
@@ -188,7 +203,7 @@
 
 @keyframes burgerOpen {
 	0% {
-		box-shadow: inset 0 -2px 0 0 #000;
+		box-shadow: inset 0 -2px 0 0 $colorWhiteSoft;
 	}
 	100% {
 		box-shadow: inset 0 -2px 0 0 transparent;
@@ -241,7 +256,7 @@
 
 @keyframes burgerClose {
 	0% {
-		box-shadow: inset 0 -2px 0 0 #000;
+		box-shadow: inset 0 -2px 0 0 $colorWhiteSoft;
 	}
 	100% {
 		box-shadow: inset 0 -2px 0 0 transparent;
@@ -280,10 +295,6 @@
 		-webkit-transform: scaleX(1);
 		transform: scaleX(1);
 	}
-/*	90% {
-		-webkit-transform: scaleX(.9);
-		transform: scaleX(.9);
-	}*/
 	100% {
 		-webkit-transform: scaleX(1);
 		transform: scaleX(1);
@@ -312,7 +323,7 @@
 		height: 100%;
 		overflow-y: auto;
 
-		background-color: lightcoral;
+		background-color: $colorBgBlue;
 		z-index: 8;
 
 		&.nav-menu--active {
@@ -327,8 +338,8 @@
 	}
 
 	.nav-menu__item {
+		margin-right: 0;
 		&:not(&:last-child) {
-			margin-right: 0;
 			margin-bottom: .938rem;
 		}
 
