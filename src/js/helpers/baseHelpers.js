@@ -1,5 +1,6 @@
 import MobileChecker from "./mobileChecker.js";
 import { callbacks } from "browser-sync/dist/logger.js";
+import { re } from "@babel/core/lib/vendor/import-meta-resolve.js";
 
 class BaseHelpers {
   static html = document.documentElement;
@@ -28,6 +29,26 @@ class BaseHelpers {
     if (MobileChecker.isAny) {
       this.html.classList.add("touch");
     }
+  }
+
+  // Adding the 'loaded' class when the page is completely loaded
+  static addLoadedClass() {
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        this.html.classList.add("loaded")
+      }, 300)
+    })
+  }
+
+  // Getting the hash from the URL
+  static get getHash() {
+    return location.hash?.replace("#", "");
+  }
+
+  // Setting the hash in the URL
+  static setHash(hash) {
+    hash = hash ? `#${hash}` : location.href.split("#")[0];
+    history.pushState("", "", hash);
   }
 }
 
