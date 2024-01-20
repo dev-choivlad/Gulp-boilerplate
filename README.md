@@ -18,14 +18,13 @@ Gulp boilerplate + Webpack + Babel
 #### Here is an example of fonts.scss
 ```scss
 @font-face {
-	font-family: MontserratAlternates;
+	font-family: OpenSans;
 	font-display: swap;
-	src: url("../fonts/MontserratAlternates-Medium.woff2") format("woff2"), url("../fonts/MontserratAlternates-Medium.woff") format("woff");
-	font-weight: 500;
+	src: url("../fonts/OpenSans-Bold.woff2") format("woff2"), url("../fonts/OpenSans-Bold.woff") format("woff");
+	font-weight: 700;
 	font-style: normal;
 }
 ```
-### Attention!
 > Be aware, if the `src/scss/fonts` folder already contains a `fonts.scss` file, then when adding new fonts, you **need to delete** the old `fonts.scss` file. Upon running the build process, Gulp will convert all the new fonts and generate a new `fonts.scss` file.
 
 #### What else does the build process do?
@@ -40,3 +39,8 @@ Gulp boilerplate + Webpack + Babel
 ```json
 "homepage": "https://{UserName}.github.io/{NameRepo}",
 ```
+## What does Webpack do?
+- Processes JavaScript files;
+- Supports modular script inclusion using `import/export`;
+- Using `babel`, it  allows to write code in your favorite **ES6+**;
+- Compresses JS files and deletes comments in prod mode;
