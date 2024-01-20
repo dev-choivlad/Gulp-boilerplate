@@ -11,7 +11,7 @@ import webpCss from "gulp-webpcss";
 import groupMediaQueries from "gulp-group-css-media-queries";
 import autoprefixer from "autoprefixer";
 import postcss from "gulp-postcss";
-import postcssPresetEnv from "postcss-preset-env"
+import postcssPresetEnv from "postcss-preset-env";
 
 const sass = gulpSass(dartSass);
 export const scss = () => {
