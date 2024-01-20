@@ -14,8 +14,8 @@ Gulp boilerplate + Webpack + Babel
 - Removes comments from SCSS files;
 - In production mode, minifies CSS and creates an uncompressed copy;
 - Converts fonts to .ttf, and from .ttf to woff/woff2;
-- creates a file for font inclusion. This file is generated at the following path: src/scss/fonts/fonts.scss;
-### Here is an example of fonts.scss
+- Creates a file for font inclusion. This file is generated at the following path: src/scss/fonts/fonts.scss;
+#### Here is an example of fonts.scss
 ```scss
 @font-face {
 	font-family: MontserratAlternates;
@@ -25,3 +25,15 @@ Gulp boilerplate + Webpack + Babel
 	font-style: normal;
 }
 ```
+### Attention!
+> Be aware, if the `src/scss/fonts` folder already contains a `fonts.scss` file, then when adding new fonts, you **need to delete** the old `fonts.scss` file. Upon running the build process, Gulp will convert all the new fonts and generate a new `fonts.scss` file.
+
+#### What else does the build process do?
+- Compresses images and additionally converts them to the `.webp` format, and includes them if the browser supports this format.
+- Copies the `/static` folder and its contents into the final build. This means that any files placed in this folder will be added to the final build.
+- Creates SVG sprites with a separate command `npm run svg`.
+- Clears the final project folder before each build to avoid including unnecessary files.
+- Archives the final folder with **the project name** for the client with a separate command `npm run zip`.
+- In dev mode, Gulp starts a server with automatic reloading whenever files in the project are modified.
+- With a separate command `npm run deployFTP` uploads the final project to hosting. Settings for sending to a hostings specified in the file `gulp/config/ftp.js`.
+- 
