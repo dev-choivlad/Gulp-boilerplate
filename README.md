@@ -35,5 +35,8 @@ Gulp boilerplate + Webpack + Babel
 - Clears the final project folder before each build to avoid including unnecessary files.
 - Archives the final folder with **the project name** for the client with a separate command `npm run zip`.
 - In dev mode, Gulp starts a server with automatic reloading whenever files in the project are modified.
-- With a separate command `npm run deployFTP` uploads the final project to hosting. Settings for sending to a hostings specified in the file `gulp/config/ftp.js`.
-- 
+- With a separate command `npm run deployFTP` uploads the final project to hosting. The settings for sending to a hosting are specified in the file `gulp/config/ftp.js`.
+- With a separate command `npm run deploy` deploys the `/dist` folder to a separate branch on GitHub to showcase the project on GitHub Pages. To achieve this, specify the link to your gh-pages in the **homepage** field of `package.json`.
+```json
+"homepage": "https://{UserName}.github.io/{NameRepo}",
+```
