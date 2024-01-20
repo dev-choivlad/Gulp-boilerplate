@@ -1,4 +1,4 @@
-# 🚀Gulp-boilerplate
+# 🚀 Gulp-boilerplate
 Gulp boilerplate + Webpack + Babel
 
 ## 🫡 Use the following commands to start:
